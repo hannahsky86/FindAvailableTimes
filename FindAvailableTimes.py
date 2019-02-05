@@ -1,5 +1,6 @@
 from collections import defaultdict
 from operator import itemgetter
+import sys
 
 
 class FindAvailableTimes:
@@ -20,7 +21,7 @@ class FindAvailableTimes:
         unavailable_times_list = unavailable_time_and_duration(formatted_busy_intervals)
         unavailable_times_list = sorted(unavailable_times_list, key=itemgetter(0))
 
-        first_st, first_end = unavailable_times_list[0]
+        first_st,_ = unavailable_times_list[0]
         if first_st < day_start:
             day_start = first_st
 
@@ -103,7 +104,7 @@ if __name__ == "__main__":
     """Main method calls team availability."""
 
     day_start_time = '8:30'
-    day_end_time = '5:30'
+    day_end_time = '5:00'
 
     lunch_start_time = '12:00'
     lunch_end_time = '1:00'
@@ -112,21 +113,5 @@ if __name__ == "__main__":
         ['9:00', '9:30'], ['9:00', '11:30'], ['10:00', '11:00'], ['2:30', '3:00'], ['2:30', '3:30'],
         ['9:00', '2:00'], [lunch_start_time, lunch_end_time]
     ]
-
-    # Test entire day
-    # unavailable_times = [['8:00', '6:00'], [lunch_start_time, lunch_end_time]]
-    # []
-
-    # # Test middle of day - ok
-    # unavailable_times = [['9:00', '5:00'], [lunch_start_time, lunch_end_time]]
-    # [['8:30', '9:00'], ['5:00', '5:30']]
-
-    # # Test start of day - ok
-    # unavailable_times = [['8:00', '5:00']]
-    # [['5:00', '5:30']]
-    #
-    # # Test end of day - ok
-    # unavailable_times = [['9:00', '6:30']]
-    # [['8:30', '9:00']]
 
     FindAvailableTimes(day_start_time, day_end_time, unavailable_times).team_availability()
