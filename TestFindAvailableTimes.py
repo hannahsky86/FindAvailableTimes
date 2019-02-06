@@ -92,3 +92,16 @@ class TestFindAvailableTimes(TestCase):
         # Assert
         self.assertTrue(available_times == [['11:30', '12:00'], ['12:00', '12:30'], ['12:30', '1:00'], ['1:00', '1:30']])
 
+    def test_check_if_times_are_available(self):
+
+        # Assign
+        day_start_time = '8:30'
+        day_end_time = '5:00'
+        unavailable_times = [['8:30', '11:30'],['1:30', '5:30']]
+        times_to_check = [['9:00', '10:30'], ['11:30', '12:00'], ['2:00', '4:00']]
+
+        # Act
+        available_times = fats.FindAvailableTimes(day_start_time, day_end_time, unavailable_times, times_to_check).team_availability()
+
+        # Assert
+        self.assertTrue(available_times == [['11:30', '12:00']])
