@@ -29,26 +29,24 @@ class FindAvailableTimes:
 
         available_times_list = []
         available_times(day_start, day_end, unavailable_times_list, available_times_list)
-
         formatted_intervals_to_check = create_formatted_list_of_intervals(times_to_check)
+
         ok_times = []
         ok_times.append(check_available_times(formatted_intervals_to_check, available_times_list))
 
-        return available_times_list
+        unformatted_ok_times = create_unformatted_list_of_intervals(ok_times)
+        unformatted_available_times = create_unformatted_list_of_intervals(available_times_list)
+
+        return unformatted_ok_times, unformatted_available_times
 
 
 def check_available_times(times_to_check, available_times_list):
 
-    for index1 in range(0, len(times_to_check)):
-        start_time = times_to_check[index1][0]
-        end_time = times_to_check[index1][1]
+    for start, end  in times_to_check:
+        for a_start, a_end in available_times_list:
 
-        for index2 in range(0, len(available_times_list)):
-            a_start_time = available_times_list[index1][0]
-            a_end_time = available_times_list[index1][1]
-
-            if start_time>= a_start_time and end_time<=a_end_time:
-                return [number_to_time(start_time), number_to_time(end_time)]
+            if start >= a_start and end<=a_end:
+                return [start,end]
 
 
 def available_times(day_start, day_end, unavailable_times_list, available_times_list):
@@ -65,14 +63,25 @@ def available_times(day_start, day_end, unavailable_times_list, available_times_
         available_times(day_start+30, day_end, unavailable_times_list, available_times_list)
 
 
-def create_formatted_list_of_intervals(busy_intervals):
+def create_formatted_list_of_intervals(intervals):
 
-    formatted_busy_intervals = []
-    if (len(busy_intervals)) > 0:
-        for start, end in busy_intervals:
-            formatted_busy_intervals.append([time_to_number(start), time_to_number(end)])
+    formatted_intervals = []
+    if intervals != [None] and (len(intervals)) > 0:
+        for start, end in intervals:
+            formatted_intervals.append([time_to_number(start), time_to_number(end)])
 
-    return formatted_busy_intervals
+    return formatted_intervals
+
+
+def create_unformatted_list_of_intervals(intervals):
+
+    unformatted_intervals = []
+    if intervals!=[None] and(len(intervals)) > 0:
+        for start, end in intervals:
+            unformatted_intervals.append([number_to_time(start), number_to_time(end)])
+
+    return unformatted_intervals
+
 
 
 def unavailable_time_and_duration(busy_intervals):
