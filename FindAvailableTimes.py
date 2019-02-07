@@ -14,8 +14,8 @@ class FindAvailableTimes:
     def team_availability(self):
         """Creates a list of times, in half hour increments, when all team members are available."""
 
-        day_start_time = time_to_number(self.day_start)
-        day_end_time = time_to_number(self.day_end)
+        day_start = time_to_number(self.day_start)
+        day_end = time_to_number(self.day_end)
         busy_intervals = self.busy_intervals
         times_to_check = self.times_to_check
 
@@ -24,30 +24,33 @@ class FindAvailableTimes:
         busy_times_list = sorted(busy_times_list, key=itemgetter(0))
 
         first_busy_start_time, _ = busy_times_list[0]
-        if first_busy_start_time < day_start_time:
-            day_start_time = first_busy_start_time
+        if first_busy_start_time < day_start:
+            day_start = first_busy_start_time
 
         available_times_list = []
-        available_times(day_start_time, day_end_time, busy_times_list, available_times_list)
-        intervals_to_check = format_list_of_times(times_to_check, is_number_format=True)
+        available_times(day_start, day_end, busy_times_list, available_times_list)
 
-        ok_time_intervals = []
-        ok_time_intervals.append(check_available_times(intervals_to_check, available_times_list))
+        times_to_check = format_list_of_times(times_to_check, is_number_format=True)
 
-        ok_time_intervals = format_list_of_times(ok_time_intervals)
+        ok_times = check_available_times(times_to_check, available_times_list)
+        ok_times = format_list_of_times(ok_times)
+
         available_time_intervals = format_list_of_times(available_times_list)
 
-        return ok_time_intervals, available_time_intervals
+        return ok_times, available_time_intervals
 
 
 def check_available_times(times_to_check, available_times_list):
+    """Check for available times."""
 
-    for start, end  in times_to_check:
+    ok_time_intervals = []
+    for start, end in times_to_check:
         for a_start, a_end in available_times_list:
-
             if start >= a_start and end<=a_end:
-                return [start,end]
+                ok_time_intervals.append([start, end])
+                break
 
+    return ok_time_intervals
 
 def available_times(day_start, day_end, unavailable_times_list, available_times_list):
     """Recursive method to find all available times during the work day."""
@@ -130,12 +133,14 @@ if __name__ == "__main__":
     lunch_start_time = '12:00'
     lunch_end_time = '1:00'
 
+    # Story 1
     # unavailable_times = [
     #     ['9:00', '9:30'], ['9:00', '11:30'], ['10:00', '11:00'], ['2:30', '3:00'], ['2:30', '3:30'],
     #     ['9:00', '2:00'], [lunch_start_time, lunch_end_time]
     # ]
 
+    # Story 2
     unavailable_times = [['9:00', '9:30'], ['9:00', '11:30'], ['10:00', '11:00'], ['2:30', '3:00'], ['2:30', '3:30']]
-    times_to_check = [['9:00', '10:30'],['11:30', '12:00'], ['2:00', '4:00']]
+    check_times = [['9:00', '10:30'],['11:30', '12:00'], ['2:00', '4:00']]
 
-    FindAvailableTimes(day_start_time, day_end_time, unavailable_times, times_to_check).team_availability()
+    FindAvailableTimes(day_start_time, day_end_time, unavailable_times, check_times).team_availability()
