@@ -83,7 +83,6 @@ def create_unformatted_list_of_intervals(intervals):
     return unformatted_intervals
 
 
-
 def unavailable_time_and_duration(busy_intervals):
     """Create a list of busy times and duration of busy time"""
 
