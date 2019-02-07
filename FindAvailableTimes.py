@@ -14,30 +14,30 @@ class FindAvailableTimes:
     def team_availability(self):
         """Creates a list of times, in half hour increments, when all team members are available."""
 
-        day_start = time_to_number(self.day_start)
-        day_end = time_to_number(self.day_end)
+        day_start_time = time_to_number(self.day_start)
+        day_end_time = time_to_number(self.day_end)
         busy_intervals = self.busy_intervals
         times_to_check = self.times_to_check
 
-        formatted_busy_intervals = create_formatted_list_of_intervals(busy_intervals)
-        unavailable_times_list = unavailable_time_and_duration(formatted_busy_intervals)
-        unavailable_times_list = sorted(unavailable_times_list, key=itemgetter(0))
+        formatted_busy_intervals = format_list_of_times(busy_intervals, is_number_format=True)
+        busy_times_list = unavailable_time_and_duration(formatted_busy_intervals)
+        busy_times_list = sorted(busy_times_list, key=itemgetter(0))
 
-        first_st, _ = unavailable_times_list[0]
-        if first_st < day_start:
-            day_start = first_st
+        first_busy_start_time, _ = busy_times_list[0]
+        if first_busy_start_time < day_start_time:
+            day_start_time = first_busy_start_time
 
         available_times_list = []
-        available_times(day_start, day_end, unavailable_times_list, available_times_list)
-        formatted_intervals_to_check = create_formatted_list_of_intervals(times_to_check)
+        available_times(day_start_time, day_end_time, busy_times_list, available_times_list)
+        intervals_to_check = format_list_of_times(times_to_check, is_number_format=True)
 
-        ok_times = []
-        ok_times.append(check_available_times(formatted_intervals_to_check, available_times_list))
+        ok_time_intervals = []
+        ok_time_intervals.append(check_available_times(intervals_to_check, available_times_list))
 
-        unformatted_ok_times = create_unformatted_list_of_intervals(ok_times)
-        unformatted_available_times = create_unformatted_list_of_intervals(available_times_list)
+        ok_time_intervals = format_list_of_times(ok_time_intervals)
+        available_time_intervals = format_list_of_times(available_times_list)
 
-        return unformatted_ok_times, unformatted_available_times
+        return ok_time_intervals, available_time_intervals
 
 
 def check_available_times(times_to_check, available_times_list):
@@ -63,24 +63,18 @@ def available_times(day_start, day_end, unavailable_times_list, available_times_
         available_times(day_start+30, day_end, unavailable_times_list, available_times_list)
 
 
-def create_formatted_list_of_intervals(intervals):
+def format_list_of_times(intervals, is_number_format=False):
+    """Changes format of date intervals to number or time format"""
 
     formatted_intervals = []
-    if intervals != [None] and (len(intervals)) > 0:
-        for start, end in intervals:
-            formatted_intervals.append([time_to_number(start), time_to_number(end)])
-
-    return formatted_intervals
-
-
-def create_unformatted_list_of_intervals(intervals):
-
-    unformatted_intervals = []
     if intervals!=[None] and(len(intervals)) > 0:
         for start, end in intervals:
-            unformatted_intervals.append([number_to_time(start), number_to_time(end)])
+            if is_number_format:
+                formatted_intervals.append([time_to_number(start), time_to_number(end)])
+            else:
+                formatted_intervals.append([number_to_time(start), number_to_time(end)])
 
-    return unformatted_intervals
+    return formatted_intervals
 
 
 def unavailable_time_and_duration(busy_intervals):
