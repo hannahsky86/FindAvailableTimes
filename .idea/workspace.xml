@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="92f99dd2-17b0-4f48-baa1-ce9d8670c260" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/FindAvailableTimes.py" beforeDir="false" afterPath="$PROJECT_DIR$/FindAvailableTimes.py" afterDir="false" />
-    </list>
+    <list default="true" id="92f99dd2-17b0-4f48-baa1-ce9d8670c260" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,7 +28,7 @@
     <session id="-923123547">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="1" />
+          <entry key="project.closed" value="2" />
           <entry key="project.open.time.7" value="1" />
           <entry key="project.open.time.9" value="1" />
           <entry key="project.opened" value="2" />
@@ -62,11 +60,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/FindAvailableTimes.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="338">
-              <caret line="36" column="8" lean-forward="true" selection-start-line="36" selection-start-column="8" selection-end-line="36" selection-end-column="8" />
+              <caret line="36" lean-forward="true" selection-start-line="36" selection-end-line="36" />
               <folding>
                 <element signature="e#0#35#0" expanded="true" />
               </folding>
@@ -74,11 +72,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/TestFindAvailableTimes.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="30">
-              <caret line="2" column="29" lean-forward="true" selection-start-line="2" selection-start-column="29" selection-end-line="2" selection-end-column="29" />
+            <state relative-caret-position="60">
+              <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
             </state>
           </provider>
         </entry>
@@ -290,9 +288,6 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="Unittests_for_TestFindAvailableTimes_TestFindAvailableTimes_test_check_if_times_are_available - 2019.02.06 at 18h 20m 01s.xml">
-      <configuration name="Unittests for TestFindAvailableTimes.TestFindAvailableTimes.test_check_if_times_are_available" configurationId="tests" />
-    </history-entry>
     <history-entry file="Unittests_for_TestFindAvailableTimes_TestFindAvailableTimes_test_check_if_times_are_available - 2019.02.06 at 18h 20m 33s.xml">
       <configuration name="Unittests for TestFindAvailableTimes.TestFindAvailableTimes.test_check_if_times_are_available" configurationId="tests" />
     </history-entry>
@@ -320,6 +315,9 @@
     <history-entry file="Unittests_for_TestFindAvailableTimes_TestFindAvailableTimes - 2019.02.06 at 18h 33m 56s.xml">
       <configuration name="Unittests for TestFindAvailableTimes.TestFindAvailableTimes" configurationId="tests" />
     </history-entry>
+    <history-entry file="Unittests_for_TestFindAvailableTimes_TestFindAvailableTimes - 2019.02.06 at 18h 34m 24s.xml">
+      <configuration name="Unittests for TestFindAvailableTimes.TestFindAvailableTimes" configurationId="tests" />
+    </history-entry>
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
@@ -330,7 +328,7 @@
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3281471" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.30410182" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.30410182" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39962476" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -357,20 +355,20 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/venv/lib/python2.7/site-packages/pandas/core/generic.py" />
     <entry file="file://$PROJECT_DIR$/venv/lib/python2.7/site-packages/pandas/core/groupby/groupby.py" />
-    <entry file="file://$PROJECT_DIR$/TestFindAvailableTimes.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="29" lean-forward="true" selection-start-line="2" selection-start-column="29" selection-end-line="2" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/FindAvailableTimes.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="338">
-          <caret line="36" column="8" lean-forward="true" selection-start-line="36" selection-start-column="8" selection-end-line="36" selection-end-column="8" />
+          <caret line="36" lean-forward="true" selection-start-line="36" selection-end-line="36" />
           <folding>
             <element signature="e#0#35#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TestFindAvailableTimes.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
         </state>
       </provider>
     </entry>
